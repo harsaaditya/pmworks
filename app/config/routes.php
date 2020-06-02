@@ -60,19 +60,19 @@ if ($config['dbdriver'] === 'mysqli') {
   if (!empty($host) && !empty($username) && !empty($database)) {
     require_once(BASEPATH . 'database/DB' . EXT);
     $db = &DB();
-    $system_settings = $db->get('system_settings')->row();
+    $system_settings = $db->get_where('system_settings', ['id' => 1])->row();
     $route[$system_settings->system_login] = 'mian/auth';
     $route['mian/auth'] = $system_settings->system_login;
-    $route[$system_settings->system_login . '/auth/forgot_password'] = 'mian/auth/forgot_password';
-    $route['mian/auth/forgot_password'] = $system_settings->system_login . '/auth/forgot_password';
-    $route[$system_settings->system_login . '/auth/reset_password'] = 'mian/auth/reset_password';
-    $route['mian/auth/reset_password'] = $system_settings->system_login . '/auth/reset_password';
-    $route[$system_settings->system_login . '/auth/change/(.+)'] = 'mian/auth/change/$1';
-    $route['mian/auth/change/(.+)'] = $system_settings->system_login . '/auth/change/$1';
-    $route[$system_settings->system_login . '/auth/change_password/(.+)'] = 'mian/auth/change_password/$1';
-    $route['mian/auth/change_password/(.+)'] = $system_settings->system_login . '/auth/change_password/$1';
-    $route[$system_settings->system_login . '/auth/logout'] = 'mian/auth/logout';
-    $route['mian/auth/logout'] = $system_settings->system_login . '/auth/logout';
+    $route[$system_settings->system_login . '/forgot_password'] = 'mian/auth/forgot_password';
+    $route['mian/auth/forgot_password'] = $system_settings->system_login . '/forgot_password';
+    $route[$system_settings->system_login . '/reset_password'] = 'mian/auth/reset_password';
+    $route['mian/auth/reset_password'] = $system_settings->system_login . '/reset_password';
+    $route[$system_settings->system_login . '/change/(.+)'] = 'mian/auth/change/$1';
+    $route['mian/auth/change/(.+)'] = $system_settings->system_login . '/change/$1';
+    $route[$system_settings->system_login . '/change_password/(.+)'] = 'mian/auth/change_password/$1';
+    $route['mian/auth/change_password/(.+)'] = $system_settings->system_login . '/change_password/$1';
+    $route[$system_settings->system_login . '/logout'] = 'mian/auth/logout';
+    $route['mian/auth/logout'] = $system_settings->system_login . '/logout';
   }
 }
 
